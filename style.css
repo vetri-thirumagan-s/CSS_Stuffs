@@ -1,0 +1,74 @@
+body {
+    background-color: black;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.header {
+    color: aliceblue;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.text {
+    color: azure;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.card {
+    background: rgb(47, 46, 46);
+    text-align: center;
+    padding: 2em;
+    width: 300px;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after,
+.card::before {
+    content: "";
+    background-image: conic-gradient(
+        from var(--angle),
+        transparent,
+        rgb(255, 70, 70),
+        rgb(255, 61, 255),
+        rgb(108, 228, 108),
+        rgb(255, 189, 67),
+        rgb(35, 189, 255),
+        rgb(255, 96, 96)
+    );
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
